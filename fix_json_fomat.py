@@ -1,8 +1,8 @@
 import json
 
 # Define the path to the JSON file
-input_file_path = 'C:/Users/Yvette.Yuan/Downloads/fetch2024/raw_receipts.json'
-output_file_path = 'C:/Users/Yvette.Yuan/Downloads/fetch2024/formatted_receipts.json'
+input_file_path = 'C:/Users/Yvette.Yuan/Downloads/fetch2024/fetch-data-modeling/raw_receipts.json'
+output_file_path = 'C:/Users/Yvette.Yuan/Downloads/fetch2024/fetch-data-modeling/formatted_receipts.json'
 
 # Read the JSON file
 with open(input_file_path, 'r') as f:
