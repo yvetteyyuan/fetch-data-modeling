@@ -1,19 +1,20 @@
-there are duplicate user_id values in your JSON data, which violates the primary key constraint on the v_users table.
---The script now uses a set to track unique user_id values and remove duplicates before inserting them into the table.
+/*
+-------------------------- Data quality issues identified during data modeling --------------------------------
 
-same issue as above with brands
+-- 1. Duplicate user_id values detected in JSON data, violating primary key constraint in v_users table. 
+-- Same issue brands barcodes in v_brands table.
+-- Resolution: The create_tables.py script uses a set to track unique id values and remove duplicates before inserting them into the table.
 
-brands: barcode not always matching with receipt items barcode. brand barcodes all start with 51111 but receipt items barcodes have other formats. i.e. no 2021-02 barcodes in receipt items are found in brands barcodes;
- Given the discrepancy in barcode formats, partial matching or data enrichment might be necessary to improve the join results. If partial matching is not reliable, consider enriching the data or accepting that some records will be dropped.  If possible, enrich the data to ensure that the barcodes in the receipt items can be matched with the barcodes in the formatted brands.
+-- 2. Source JSON files not formatted as a single valid JSON document. 
+-- Resolution: fix_json_format.py properly formats raw data adds proper comma separation between objects.
 
-the file is not formatted as a single valid JSON document. Enclose all JSON objects in an array.Ensure that each JSON object is separated by a comma.
---write a python script to properly format the raw data
+-- 3. Inconsistent fields in user records (e.g. lastLogin, state, signupSource). 
+-- Resolution: The create_tables.py script handles missing fields by setting NULL/None as default values when fields are absent.
 
-JSON file contains improperly formatted JSON objects or if there are empty lines or other non-JSON content in the file.
---add more robust error handling to skip lines that cannot be parsed as JSON.
-
-some user records in your JSON data do not have the lastLogin/state/signupsource field. 
---The script now provides a default value (None) if the lastLogin field is missing.
+-- 4. Barcode matching inconsistency between brands and receipt items. 
+-- i.e. Brands barcodes consistently start with '51111' while receipt items use different formats. No matching barcodes found between brands and receipt items for period 2021-02. 
+-- Resolution: Enriched data with item descriptions in v_receipt_items for the sake of the exercise. However, I recommend standardizing the barcode format.
+*/
 
 -------------------------- Data quality check - v_users --------------------------------
 -- No missing values except for last_login(172/212), sign_up_source(207/212), state(206/212)
