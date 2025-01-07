@@ -1,0 +1,22 @@
+@stakeholder Here are the key findings and questions from working with the users, receipts, and brands datasets.
+Through my analysis and validation checks, I found several data quality issues:
+- Our brands and receipt items seem to use different barcode standards - brands consistently use a '51111' prefix while receipt items follow various formats. This impacts our ability to reliably match brands across systems.
+- When validating price calculations, I found cases where final_price doesn't match item_price * quantity_purchased, suggesting either special pricing rules I'm unaware of or potential data issues.
+- There are "orphaned" receipts in our system - receipts with no associated line items, possibly due to data capture issues.
+
+To properly address these and build a robust data model, I'd love to understand:
+1. business context
+- What are the KPIs and analyses your team needs from this data? 
+- What's the required freshness for the data? Does the refresh need to complete by specific time of the day?
+2. data concerns:
+- What's the expected format for barcodes across our system? Or is there documentation on how they should map between datasets?
+- Do we have any existing rules for standardizing brand names?
+- Are there specific date ranges we should focus on, or any historical data cutoff points I should be aware of?
+
+I'm also thinking ahead about scalability as we grow:
+- The receipts and items data will grow significantly faster than other tables
+- I anticipate slowing query performance as we start joining these large datasets
+- Frequent refreshes of larger data volumes could impact database performance
+
+Would you have 30 minutes this week to discuss these points? This will ensure we build a system that meets the immediate analytics needs but also scales with our growth.
+Happy to provide specific examples or dig deeper into any of the above.
