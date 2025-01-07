@@ -1,3 +1,4 @@
+-- Written in PostgreSQL 12
 --------------------------------------------------------------------------------------------------------------------------------------
 /* What are the top 5 brands by receipts scanned for most recent month?
    How does the ranking of the top 5 brands by receipts scanned for the recent month compare to the ranking for the previous month?
