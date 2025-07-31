@@ -1,6 +1,6 @@
 # Fetch Data Modeling
 
-This repo contains scripts and queries to build data models for Fetch Rewards and perform analytics. The project involves transforming unstructured JSON data into a structured relational data model, generating queries to answer business questions, and capturing data quality issues.
+This repo contains scripts and queries to build data models for Fetch Rewards (a consumer shopping rewards App) and perform analytics. The project involves transforming unstructured JSON data into a structured relational data model, generating queries to answer business questions, and capturing data quality issues.
 
 ## Requirements and Deliverables
 
